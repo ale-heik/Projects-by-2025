@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tulosta tasoitukset</title>
+
+</head>
+<body>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        background-image: url(/H8/background_2.jpg) ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .box {
+        margin-top: 50px;
+        border: 1px solid black;
+        padding: 10px;
+        width: 500px;
+        text-align: center;
+        background-color: rgb(222, 236, 255);
+        border-radius: 10px;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn {
+        background-color: rgb(252, 231, 246);
+        border: 1px solid;
+        padding: 5px 20px;
+        border-radius: 5px;
+    }  
+
+    ul {
+        background-color: white;
+        list-style-type: none;
+        padding: 0;
+        margin: 10px 50px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    ul li {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px
+}
+
+    input {
+    margin: 10px;
+    border: solid;
+    border-radius: 100;
+    width: 75%;
+    padding: 10px;
+    float: center;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(244, 253, 245);
+    }
+
+    .important-btn {
+    left: 0;
+    position: absolute;
+    background-color: rgb(252, 231, 246);
+    font-size: 16px;
+    padding: 2px 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    }
+
+    .important {
+        background-color: rgb(252, 231, 246) !important;
+    }
+
+</style>
+
+<div class="box">
+    <h1 bold>To-do List</h1>
+    <br>
+    <input type="text" id="myInput" placeholder="Add task"><br>
+    <div class="buttons-container">
+        <span onclick="NewTask()" class="btn" >Add</span>
+        <span onclick="emptyList()" class="btn" >Empty List</span>
+    </div>
+    <ul id="lista"></ul>
+    <p style="font-size: 12px;">
+        Press the arrow to move important items to the top of the list
+        <br>
+        Click on a task to delete it
+    </p>
+</div>
+<script>
+    
+// Listasta poistaminen
+document.addEventListener("click", function(event) {
+    if (event.target && event.target.tagName === "LI"){
+        event.target.remove();
+    }
+})
+
+ // Listaan lisääminen
+function NewTask(){
+    var taskText = document.getElementById("myInput").value;
+
+    if (taskText === '') {
+        alert("You cant add empty task");
+        return;
+    }
+
+    // luodaan uusi tehtävä
+    var li = document.createElement("li");
+    li.textContent = taskText;
+
+    // sijoitetaan tärkeysjärjestyksen mukaan
+    var importantBtn = document.createElement("button");
+    importantBtn.textContent = "^"
+    importantBtn.className = "important-btn"
+    importantBtn.onclick = function() {
+        markAsImportant(li);
+    };
+
+    li.appendChild(importantBtn);
+
+    //lisää tehtävä listan loppuun
+    var ul = document.getElementById("lista");
+    ul.appendChild(li);
+
+    //tyhjennä syöttökenttä
+
+    document.getElementById("myInput").value = "";
+}
+
+function markAsImportant(task) {
+    var ul = document.getElementById("lista");
+
+    if (task.classList.contains("important")) {
+
+        task.classList.remove("important");
+        li.appendChild(task);
+    } else {
+        task.classList.add("important");
+        ul.prepend(task);
+    }
+}
+
+// listan tyhjennys
+function emptyList() {
+        var empty = document.getElementById("lista");
+        empty.innerHTML = "";
+}
+
+
+</script>
+</body>
+</html>
