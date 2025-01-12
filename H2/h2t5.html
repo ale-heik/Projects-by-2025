@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H2T5</title>
+</head>
+<body>
+<script>
+function Person(name, age, phone, email) {
+    this.name = name;
+    this.age = age;
+    this.phone = phone;
+    this.email = email;
+
+    this.addage = function () {
+        this.age++;
+    }
+
+    this.printData = function () {
+        console.log(this.name + ":" + this.age + ":" + this.phone + ":" + this.email);
+    }
+}
+
+const kim = new Person("Alainen Kim", 10, "123", "kimi@gmail.com");
+const topi = new Person("Tomppeli Topi", 20, "456", "topi@gmail.com");
+const sari = new Person("Sössö Sari", 33, "789", "sari@gmail.com");
+const visa = new Person("Vammakuutio Visa", 14, "135", "visa@gmail.com");
+
+kim.printData();
+topi.printData();
+sari.printData();
+visa.printData();
+
+kim.addage();
+topi.addage();
+sari.addage();
+visa.addage();
+
+kim.printData();
+topi.printData();
+sari.printData();
+visa.printData();
+</script>
+
+</body>
+</html>

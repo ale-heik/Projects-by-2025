@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H2T6</title>
+</head>
+<body>
+<style>
+/*Kuvan mukaisen lomakkeen tyylimääritykset*/
+* {width: 200px; margin: auto}
+    .box {
+      border: 1px dashed #000; padding: 15px; background-color: #adbed8; margin-top: 15px;
+    }
+    input[type="text"] {width: 60px;}
+
+    button {
+      background-color: #069; border-radius: 5px;
+      color: #fff; margin-bottom: 5px; margin-top: 15px;
+      padding: 5px 15px; border: none;
+    }
+        h3 {text-align: center; margin-bottom: 15px;}
+</style>
+
+
+
+<body>
+    <div class="box">
+        <form id="f">
+            <table>
+                <tr><td>Tunnit: </td><td><input type="text" id="n1" placeholder="1" value="1"></td></tr>
+                <tr><td>Minuutit: </td><td><input type="text" id="n2"  placeholder="20" value="20"></td></tr>
+                <tr><td>Sekunnit: </td><td><input type="text" id="n3"  placeholder="0" value="0"></td></tr>
+                <tr><td>Kilometrit:</td><td><input type="text" id="n4"  placeholder="0" value="10"></td></tr>
+            </table>
+            <button type="button" onclick="tulostaVauhti(f.n1.value, f.n2.value, f.n3.value, f.n4.value)">Laske km/h vauhti</button>
+        </form>
+        <div id="results"></div>
+    </div>
+</body>
+
+
+<script>
+
+class Vauhtilaskin {
+    constructor(h, min, sec, km) {
+        this.h = h;
+        this.min = min;
+        this.sec = sec;
+        this.km = km;
+    }
+
+    get kmhpace() {
+        return this.calcKmhPace();
+    }
+
+    calcKmhPace() {
+    var tunnit = parseInt(this.h) + (parseInt(this.min) * 60 + parseInt(this.sec)) / 3600;
+    var tulos = this.km/tunnit;
+    return tulos.toFixed(2);
+  }
+}
+
+function tulostaVauhti(h, min, sec, km) {
+    let vlaskin = new Vauhtilaskin(h, min, sec, km);
+    var kmhvauhti = vlaskin.kmhpace;
+    let div = document.getElementById("results");
+    div.innerHTML = kmhvauhti + "km/h";
+}
+</script>
+</body>
+</html>

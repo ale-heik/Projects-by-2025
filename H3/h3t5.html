@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tulosta tasoitukset</title>
+
+</head>
+<body>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        margin: auto;
+    }
+
+    .box {
+        margin-top: 50px;
+        border: 1px solid black;
+        padding: 10px;
+        width: 600px;
+        text-align: left;
+        background-color: aliceblue;
+    }
+
+    .colourbox {
+        margin-top: 20px;
+        border: 1px solid black;
+        padding: 10px;
+        width: 580px;
+        height: 200px;
+        text-align: center;
+        background-color: white;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: left;
+        margin-left: 5px;
+    }
+
+    .btn {
+        background-color: #f9f9f9;
+        border: 1px solid;
+        padding: 5px 20px;
+        margin-top: 10px;
+    }  
+
+    input {
+    margin: 5px;
+    border: solid;
+    width: 75%;
+    padding: 10px;
+    float: center;
+    font-size: 12px;
+    text-align: center;
+    }
+
+</style>
+<div class="box">
+    <h3 bold>Valitse juhlaväri</h3>
+    <form>
+        <select id="colourset">
+            <option value="white">Select colour</option>
+            <option value="aqua">Aqua</option>
+            <option value="MediumSpringGreen">Medium Spring Green</option>
+            <option value="#34495e">Wet asphalt</option>
+        </select>
+    </form>
+    <h3>Mikä Juhla?</h3>
+    <input type="text" id="myInput" placeholder="Valitse juhla"><br>
+    <div class="buttons-container">
+        <span onclick="updateColour()" class="btn" >Vaihda valittu taustaväri</span>
+    </div>
+    <div id="thisbox" class="colourbox">
+        <p>Valittu väri: <span id="selectedColor">#fff</span></p>
+        <p>Juhla: <span id="selectedEvent"></span></p>
+    </div>
+</div>
+<script>
+// värin päivitys tekstinä värialueelle
+document.getElementById('colourset').addEventListener('change', function() {
+    var selectElem = document.getElementById('colourset');
+    var i = selectElem.selectedIndex;
+    if (i >= 0) {
+        document.getElementById('selectedColor').textContent = selectElem.options[i].value;
+    }
+});
+
+// Päivittää juhlan nimer reaaliajassa, ei numeroita
+document.getElementById('myInput').addEventListener('input', function() {
+    var input = event.target.value;
+    if (/\d/.test(input)) {
+        event.target.value = input.replace(/\d/g, '');
+    } else {
+        document.getElementById('selectedEvent').textContent = input
+    }
+})
+
+function updateColour() {
+    var selectElem = document.getElementById('colourset')
+    var i = selectElem.selectedIndex;
+    if (i < 0) {
+        return;
+    }
+    var thisbox = document.getElementById('thisbox')
+    thisbox.style.backgroundColor = selectElem.options[i].value;
+}
+
+</script>
+</body>
+</html>

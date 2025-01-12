@@ -1,0 +1,4 @@
+27.11.2024 21.23.31: POST /users/?name=Mikko%20Mallikas
+27.11.2024 21.24.09: GET /users/
+27.11.2024 21.24.26: DELETE /users/2
+27.11.2024 21.24.31: GET /users/

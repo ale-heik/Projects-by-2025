@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>H3T3-arvosanalaskin</title>
+</head>
+<body>
+    T1: <input onblur="calculateGrade()" type="text" value="0"><br>
+    T2: <input onblur="calculateGrade()" type="text" value="0"><br>
+    T3: <input onblur="calculateGrade()" type="text" value="0"><br>
+    T4: <input onblur="calculateGrade()" type="text" value="0"><br>
+
+    <div id="pistemaara"> Pistemäärä: 0</div>
+    <div id="arvosana"> Arvosana: 0</div>
+<script>
+    function calculateGrade() {
+        let summa = 0;
+        const inputs = document.getElementsByTagName("input");
+
+        for (const input of inputs) {
+            const value = parseInt(input.value);
+
+            if (value < 0 || value > 6  || isNaN(value)) {
+                document.getElementById("pistemaara").innerHTML = "VIRHE!";
+                document.getElementById("arvosana").innerHTML = "VIRHE!";
+                return;
+            }
+
+            summa = summa + value;
+        }
+
+        const grade = getGrade(summa);
+        
+        let pmaara = document.getElementById("pistemaara");
+        pmaara.innerHTML = "Pistemaara: " + summa;
+
+        let arvosana = document.getElementById("arvosana");
+        arvosana.innerHTML = "Arvosana: " + grades;
+    }
+
+    function getGrade(points) {
+        if (points < 13 ) {
+            grades = "0";
+        } else if (points < 16) {
+            grades = "1";
+        }
+         else if (points < 18) {
+            grades = "2";
+        }
+         else if (points < 20) {
+            grades = "3";
+        }
+        else if (points < 22) {
+            grades = "4";
+        }
+        else if (points < 25) {
+            grades = "5";
+        }
+        else {
+            grades = "Virhe!"
+        }
+    }
+</script>
+
+
+</body>
+</html>

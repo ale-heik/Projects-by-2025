@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack -ohjelmointi AE9688 palautukset 2024</title>
+    <link href="/main/styles.css" rel="stylesheet" type="text/css">
+    <link href="/main/prism.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+      <div id="innercontainer">
+   <div id="htmltext"><h1 id="fullstack-ohjelmointi-harjoitukset-2-26p-">FullStack-ohjelmointi : Harjoitukset 2 (26p)</h1>
+  <ul>
+  <li>Tämänkin harjoituksen tehtävät onnistuivat mielestäni tehtävänannon mukaisesti</li>
+  </ul>
+  <div class="hoo2"><h2 id="teht-v-1-4p-">Tehtävä 1 [4p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p><a href="https://student.labranet.jamk.fi/~ae9688/full-Stack/H2/h2t1.html" target="_blank">Tästä linkistä tehtävän palautus</a> </p>
+  <div class="hoo2"><h2 id="teht-v-2-4p-">Tehtävä 2 [4p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p>Rivillä 8 myFunctionWithCallback Funktio ollaa kolme parametria<br>
+    Rivillä 9 Funktio kutsuu callback- funtiota parametreilla p1 ja p2 ja palauttaa niiden tuloksen<br>
+    <br>
+    Rivillä 12 myFunc funktio käyttää palauttaa parametrit p1 ja p2 sekä muuttaa ne tekstimuotoon "Pitsa (p1) ja (p1)"<br>
+    rivillä 13 funtio result määtittelee myFunctionWithCallback funktiolle arvot. ensimmäinen arvo sioittuu arvolle p1 ja toinen p2<br>
+    Tämän jälkeen myFunctionWithCallback kutsuu myFunc:ta joka tuottaa näiden arvojen tulokset tesktinä "Pitsa kinkulla ja juustolla"<br>
+    Rivillä 14 tulosetetaan consolelogiin myFunc:in tulostama teksti<br>
+    
+    </p>
+  <div class="hoo2"><h2 id="teht-v-3-4p-">Tehtävä 3 [4p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p>Koodi tulostaa ensin kaikki taskit tyylillä<br>
+    "Task1 to execution..."<br>
+    "Task2 to execution..."<br>
+    "Task3 to execution..."<br>
+    <br>
+    Tämän jälkeen tulee tulostus<br>
+    Last code line executed!<br>
+    <br>
+    viimeisenä tulee tulosteet <br>
+    ${str} finished! eli;<br>
+    Task3 finished!<br>
+    Task1 finished!<br>
+    Task2 finished!<br>
+    <br>
+    koska <br>
+        const print = (str, taskTime) => {<br>
+        setTimeout(function() {<br>
+          console.log(`${str} finished!`)<br>
+        }, taskTime)<br>
+        }<br>
+    odottaa tasktimen verran aikaa, jonka jälkeen tulosteet tulevat<br>
+    tässä tapauskessa 500ms ja 2000ms<br>
+    <br>
+    Task3 tuloste tulee ensimmäisenä koska sen odotusaika on pienin</p>
+  <div class="hoo2"><h2 id="teht-v-4-4p-">Tehtävä 4 [4p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p><a href="https://student.labranet.jamk.fi/~ae9688/full-Stack/H2/h2t4.html" target="_blank">Tästä linkistä tehtävän palautus</a> </p>
+  <div class="hoo2"><h2 id="teht-v-5-4p-">Tehtävä 5 [4p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p><a href="https://student.labranet.jamk.fi/~ae9688/full-Stack/H2/h2t5.html" target="_blank">Tästä linkistä tehtävän palautus</a> </p>
+  <div class="hoo2"><h2 id="teht-v-6-6p-">Tehtävä 6 [6p]</h2></div>
+  <p><strong>Palautus</strong></p>
+  <p><a href="https://student.labranet.jamk.fi/~ae9688/full-Stack/H2/h2t6.html" target="_blank">Tästä linkistä tehtävän palautus</a> </p>
+  </div>
+   
+   
+   
+   
+      <script>
+       simplemde = new SimpleMDE({
+          element: document.getElementById("MyID"),
+          spellChecker: false,
+      });
+  
+  axios.get('harjoitukset2.txt?tt=1733148100')
+    .then(function (response) {
+      console.log(response);
+      doHTML(response);
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  
+    
+      function doHTML(simpletext) {
+          //teksti = simplemde.value(simpletext.data);
+          teksti = simplemde.markdown(simpletext.data);
+          var element = document.getElementById("htmltext");
+          element.insertAdjacentHTML('afterbegin', teksti);
+  
+          var x = document.querySelectorAll("pre");
+          var i;
+          for (i = 0; i < x.length; i++) {
+            x[i].className += " line-numbers";
+          }
+  
+          var x = document.querySelectorAll("img");
+          var i;
+          for (i = 0; i < x.length; i++) {
+            x[i].style.marginLeft = "auto";
+            x[i].style.marginRight = "auto";
+            x[i].style.border = "1px dashed black";
+            x[i].style.display = "block";
+            console.log(x[i].src);
+          }
+  
+  
+          var x = document.querySelectorAll("h3");
+          var i;
+          for (i = 0; i < x.length; i++) {
+             var wrapper = document.createElement('div');
+                     wrapper.setAttribute("class", "hoo3");
+             x[i].parentNode.insertBefore(wrapper, x[i]);
+             wrapper.appendChild(x[i]);
+          }
+  
+          var x = document.querySelectorAll("h2");
+          var i;
+          for (i = 0; i < x.length; i++) {
+             var wrapper = document.createElement('div');
+                     wrapper.setAttribute("class", "hoo2");
+             x[i].parentNode.insertBefore(wrapper, x[i]);
+             wrapper.appendChild(x[i]);
+          }
+  
+          var x = document.getElementById("headerslider");
+          x.insertAdjacentHTML('beforeend', ' <em>Päivitetty 17.08.2023 16:24:20</em> ');
+  
+          Prism.highlightAll();
+      }
+      
+  </script>
+  
+  
+  
+  </div>
+  </div>
+  
+  
+        <script src="http://netisto.fi/prism.js">
+    </script>
+  
+  
+  </body>
+</html>

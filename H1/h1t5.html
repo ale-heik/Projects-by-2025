@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+function get_even_numbers(numbers){
+    var even = [];
+    for (var i = 0; i <numbers.length; i++) {
+        if (numbers[i] % 2 === 0){
+            even.push(numbers[i])
+        }
+    }
+    return even;
+}
+
+var table = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+var even_numbers = get_even_numbers(table)
+
+console.log("Given numbers: " + table);
+console.log("Even numbers: " + even_numbers);
+
+
+</script>
+
+</body>
+</html>
